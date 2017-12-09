@@ -39,7 +39,7 @@ const getNumberOFNeighborBombs = (bombBoard, rowIndex, columnIndex) =>{
 		//Add eight empty arrays to our offset arrays
 		neighborOffsets.push([]);
 	}
-	neighborOffsets[0].push(-1,1);
+	neighborOffsets[0].push(-1,-1);
 	neighborOffsets[1].push(-1,0);
 	neighborOffsets[2].push(-1,1);
 	neighborOffsets[3].push(0,1);
@@ -58,7 +58,6 @@ const getNumberOFNeighborBombs = (bombBoard, rowIndex, columnIndex) =>{
 		//Check if the tile flipped is vlaid
 		if(neighborRowIndex >= 0 && neighborRowIndex < numberOfRows && neighborColumnIndex >= 0 && neighborColumnIndex < numberOfColumns){
 			// Check if the space adjacent contains a Bomb
-			// console.log(bombBoard[neighborRowIndex][neighborColumnIndex]);
 			if(bombBoard[neighborRowIndex][neighborColumnIndex] === 'B'){
 				numberOfBombs++;
 			}
@@ -91,15 +90,15 @@ const printBoard = (board) =>{
 };
 
 
-let playerBoard = generatePlayerBoard(3,4);
-let bombBoard = generateBombBoard(3,4,3);
+let playerBoard = generatePlayerBoard(3,3);
+let bombBoard = generateBombBoard(3,3,3);
 console.log('Player Board: ');
 printBoard(playerBoard);
 
 console.log('Bomb Board: ');
 printBoard(bombBoard);
 
-flipTile(playerBoard, bombBoard, 0 , 0);
+flipTile(playerBoard, bombBoard, 2, 0);
 console.log('Updated Player Board:');
 printBoard(playerBoard);
 
